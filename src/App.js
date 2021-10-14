@@ -1,5 +1,12 @@
+import SortingVisualizer from './visualizer/SortingVisualizer'
+
+
 function App() {
-  return <h1>Hello World</h1>
+  return (
+    <div>
+      <SortingVisualizer />
+    </div>
+  )
 }
 
 export default App
