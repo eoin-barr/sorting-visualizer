@@ -53,7 +53,6 @@ class SortingVisualizer extends React.Component {
       const colorChange = !animations[i][1]
       if (colorChange) {
         const lines = animations[i][0]
-        console.log(lines)
         setTimeout(() => {
           for (let j = 0; j < lines.length; j++) {
             arrLines[lines[j]].style.backgroundColor = CHANGE_COLOR
@@ -97,6 +96,7 @@ class SortingVisualizer extends React.Component {
   }
 
 
+
   render() {
     const arr = this.state.lines
     return (
@@ -110,7 +110,7 @@ class SortingVisualizer extends React.Component {
         ))}
         <p>Choose A Sorting Algorithm</p>
         <div className="" style={{ display: 'block' }}>
-          <button className="ui button" onClick={() => this.bubbleSort()}>Bubble Sort</button>
+          <button className="ui button primary" onClick={() => this.bubbleSort()}>Bubble Sort</button>
         </div>
       </div>
     )
