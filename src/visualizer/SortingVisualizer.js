@@ -1,17 +1,16 @@
 import React from 'react'
 import { getBubbleSort } from '../algorithms/BubbleSort'
 
+// import combineReducers from '../reducers'
+
 
 const ANIMATION_SPEED = 1
 const MAIN_COLOR = '#5ac75c'
 const CHANGE_COLOR = 'blue'
 
 
-function randNumFromInterval(min, max) {
-  return Math.floor(Math.random() * (max - min + 1) + min)
-}
 
-class SortingVisualizer extends React.Component {
+export default class SortingVisualizer extends React.Component {
 
   constructor(props) {
     super(props)
@@ -24,7 +23,10 @@ class SortingVisualizer extends React.Component {
   componentDidMount() {
     this.resetArr()
     window.addEventListener('resize', this.resetArr.bind(this))
-    console.log(this.state)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.resetArr.bind(this))
   }
 
   resetArr() {
@@ -32,10 +34,10 @@ class SortingVisualizer extends React.Component {
     const arr = []
     const width = window.innerWidth
     const containerWidth = width - 100
-    const numLines = containerWidth / 10
+    const numLines = containerWidth / 4
 
     const containerHeight = window.innerHeight
-    const maxLineHeight = Math.max((containerHeight - 250), 10)
+    const maxLineHeight = Math.max((containerHeight - 350), 100)
 
     for (let i = 0; i < numLines; i++) {
       arr.push(randNumFromInterval(5, maxLineHeight))
@@ -43,6 +45,15 @@ class SortingVisualizer extends React.Component {
     this.setState((state) => {
       return { lines: arr }
     })
+  }
+
+  bubbleSort() {
+    if (this.state.sorting) return
+    this.setState((state) => {
+      return { sorting: true }
+    })
+    const animations = getBubbleSort(this.state.lines)
+    this.animate(animations)
   }
 
 
@@ -68,6 +79,7 @@ class SortingVisualizer extends React.Component {
           const [lineOne, newHeight] = animations[i][0]
           const lineOneStyle = arrLines[lineOne].style
           lineOneStyle.height = `${newHeight}px`
+
         }, m++ * ANIMATION_SPEED)
       }
 
@@ -86,14 +98,7 @@ class SortingVisualizer extends React.Component {
     }
   }
 
-  bubbleSort() {
-    if (this.state.sorting) return
-    this.setState((state) => {
-      return { sorting: true }
-    })
-    const animations = getBubbleSort(this.state.lines)
-    this.animate(animations)
-  }
+
 
 
 
@@ -117,4 +122,8 @@ class SortingVisualizer extends React.Component {
   }
 }
 
-export default SortingVisualizer
+
+function randNumFromInterval(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min)
+}
+

@@ -1,5 +1,14 @@
 
 
+
+export function getBubbleSort(arr) {
+  const animations = []
+  if (arr.length <= 1) return arr
+  const copy = arr.slice()
+  bubbleSortRun(copy, animations)
+  return animations
+}
+
 function bubbleSortRun(arr, animations) {
   for (let i = 0; i < arr.length - 1; i++) {
     for (let j = 0; j < arr.length - i - 1; j++) {
@@ -14,12 +23,4 @@ function bubbleSortRun(arr, animations) {
       }
     }
   }
-}
-
-export function getBubbleSort(arr) {
-  const animations = []
-  if (arr.length <= 1) return arr
-  const copy = arr.slice()
-  bubbleSortRun(copy, animations)
-  return animations
 }
