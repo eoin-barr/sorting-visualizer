@@ -1,37 +1,40 @@
 import React from 'react'
-import { getBubbleSort } from '../algorithms/BubbleSort'
-
-// import combineReducers from '../reducers'
-
+import { connect } from 'react-redux'
+import { bubbleSortInfo, getBubbleSort } from '../algorithms/BubbleSort'
+import { getInsertionSort, insertionsSortInfo } from '../algorithms/insertionSort'
 
 const ANIMATION_SPEED = 1
 const MAIN_COLOR = '#5ac75c'
 const CHANGE_COLOR = 'blue'
 
-
-
-export default class SortingVisualizer extends React.Component {
+class SortingVisualizer extends React.Component {
 
   constructor(props) {
     super(props)
     this.state = {
-      lines: [],
-      sorting: false,
+      array: this.props.array,
+      isRunning: this.props.isRunning,
+      algoTitle: this.props.algorithm.algoTitle,
+      algoDescription: this.props.algorithm.algoDescription,
+      wcTime: this.props.algorithm.wcTime,
+      avcTime: this.props.algorithm.avcTime,
+      beTime: this.props.algorithm.beTime,
+      wcSpace: this.props.algorithm.wcSpace,
     }
   }
 
   componentDidMount() {
-    this.resetArr()
-    window.addEventListener('resize', this.resetArr.bind(this))
+    this.resetArray()
+    window.addEventListener('resize', this.resetArray.bind(this))
   }
 
   componentWillUnmount() {
-    window.removeEventListener('resize', this.resetArr.bind(this))
+    window.removeEventListener('resize', this.resetArray.bind(this))
   }
 
-  resetArr() {
-    if (this.state.sorting) return
-    const arr = []
+  resetArray() {
+    if (this.state.isRunning) return
+    const array = []
     const width = window.innerWidth
     const containerWidth = width - 100
     const numLines = containerWidth / 4
@@ -40,25 +43,18 @@ export default class SortingVisualizer extends React.Component {
     const maxLineHeight = Math.max((containerHeight - 350), 100)
 
     for (let i = 0; i < numLines; i++) {
-      arr.push(randNumFromInterval(5, maxLineHeight))
+      array.push(randNumFromInterval(5, maxLineHeight))
     }
-    this.setState((state) => {
-      return { lines: arr }
+    this.setState(() => {
+      return { array: array }
     })
   }
 
-  bubbleSort() {
-    if (this.state.sorting) return
-    this.setState((state) => {
-      return { sorting: true }
-    })
-    const animations = getBubbleSort(this.state.lines)
-    this.animate(animations)
-  }
+
 
 
   animate(animations) {
-    const arrLines = document.getElementsByClassName('arr-line')
+    const arrLines = document.getElementsByClassName('array-line')
     let m = 0
     for (let i = 0; i < animations.length; i++) {
       const colorChange = !animations[i][1]
@@ -79,18 +75,16 @@ export default class SortingVisualizer extends React.Component {
           const [lineOne, newHeight] = animations[i][0]
           const lineOneStyle = arrLines[lineOne].style
           lineOneStyle.height = `${newHeight}px`
-
         }, m++ * ANIMATION_SPEED)
       }
-
       if (i === animations.length - 1) {
         setTimeout(() => {
-          this.setState((state) => {
+          this.setState(() => {
             return {
-              lines: this.state.lines.sort(function (a, b) {
+              array: this.state.array.sort(function (a, b) {
                 return a - b
               }),
-              sorting: false,
+              isRunning: false,
             }
           })
         }, m++ * ANIMATION_SPEED)
@@ -99,25 +93,67 @@ export default class SortingVisualizer extends React.Component {
   }
 
 
+  bubbleSort() {
+    if (this.state.isRunning) return
+    this.setState(() => {
+      return bubbleSortInfo
+    })
+    const animations = getBubbleSort(this.state.array)
+    this.animate(animations)
+  }
 
+  insertionSort() {
+    if (this.state.isRunning) return
+    this.setState(() => {
+      return insertionsSortInfo
+    })
+    const animations = getInsertionSort(this.state.array)
+    this.animate(animations)
+  }
 
 
   render() {
-    const arr = this.state.lines
+    const array = this.state.array
     return (
-      <div className="container arr-container">
-        {arr.map((value, index) => (
-          <div
-            className="arr-line"
-            key={index}
-            style={{ height: `${value}px` }}
-          ></div>
-        ))}
-        <p>Choose A Sorting Algorithm</p>
-        <div className="" style={{ display: 'block' }}>
-          <button className="ui button primary" onClick={() => this.bubbleSort()}>Bubble Sort</button>
+      <>
+        <div className="array-container">
+          {array.map((value, index) => (
+            <div
+              className="array-line"
+              key={index}
+              style={{ height: `${value}px` }}
+            ></div>
+          ))}
+          <p>Choose A Sorting Algorithm</p>
+          <div style={{ display: 'block' }}>
+            <button className={`ui button pink ${this.state.isRunning ? 'disabled' : 'hover-enable'}`} onClick={() => this.resetArray()}>Reset Array</button>
+            <button className={`ui button primary ${this.state.isRunning ? 'disabled' : 'hover-enable'}`} onClick={() => this.bubbleSort()}>Bubble Sort</button>
+            <button className={`ui button primary ${this.state.isRunning ? 'disabled' : 'hover-enable'}`} onClick={() => this.insertionSort()}>Insertion Sort</button>
+          </div>
         </div>
-      </div>
+        <div>
+          <div className="flex-center">
+            <h1>Sorting Viualiser</h1>
+          </div>
+          <hr />
+          {this.state.isRunning && (
+            <div className="ui container bg-grey animate-content">
+              <h2>{this.state.algoTitle}</h2>
+              <div className="sub-max-width">
+                <h3>Description</h3>
+                <p>{this.state.algoDescription}</p>
+              </div>
+              <div className="sub-max-width">
+                <h3>Performance</h3>
+                <p className="full-width">Worst-case time complexity <span className="float-right">{this.state.wcTime}</span></p>
+                <p className="full-width">Average time complexity <span className="float-right">{this.state.avcTime}</span></p>
+                <p className="full-width">Best-case time complexity <span className="float-right">{this.state.beTime}</span></p>
+                <p className="full-width">Worst-case space complexity <span className="float-right">{this.state.wcSpace}</span></p>
+              </div>
+            </div>
+          )}
+        </div>
+      </>
     )
   }
 }
@@ -127,3 +163,16 @@ function randNumFromInterval(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min)
 }
 
+const mapStateToProps = (state) => {
+  return {
+    array: state.array,
+    isRunning: state.isRunning,
+    algorithm: state.algorithm,
+  }
+}
+
+const mapDispatchToProps = () => () => ({
+})
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(SortingVisualizer)

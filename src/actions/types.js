@@ -1,1 +1,0 @@
-export const SET_ALGORITHM = 'SET_ALGORITHM'

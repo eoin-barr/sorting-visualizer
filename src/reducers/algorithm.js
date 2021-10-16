@@ -1,10 +1,19 @@
-import { SET_ALGORITHM } from '../actions/types'
+import { createAction, handleActions } from 'redux-actions'
 
-export default (state = {}, action) => {
-  switch (action.type) {
-    case SET_ALGORITHM:
-      return { ...state, [action.payload]: action.payload }
-    default:
-      return state
-  }
+const initialState = {
+  algoTitle: null,
+  algoDescription: null,
+  wcTime: null,
+  avcTime: null,
+  beTime: null,
+  wcSpace: null,
 }
+
+export const SET_ALGORITHM = 'SET_ALGORITHM'
+export const setAlgorithm = createAction(SET_ALGORITHM)
+
+export const algorithm = handleActions({
+  SET_ALGORITHM: (state, { payload }) => {
+    return payload
+  },
+}, initialState)
