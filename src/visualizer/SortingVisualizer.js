@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { bubbleSortInfo, getBubbleSort } from '../algorithms/BubbleSort'
 import { getInsertionSort, insertionSortInfo } from '../algorithms/insertionSort'
 import { getQuickSort, quickSortInfo } from '../algorithms/QuickSort'
+import { getSelectionSort, selectionSortInfo } from '../algorithms/SelectionSort'
 
 const ANIMATION_SPEED = 1
 const MAIN_COLOR = '#5ac75c'
@@ -121,6 +122,15 @@ class SortingVisualizer extends React.Component {
     this.animate(animations)
   }
 
+  selectionSort() {
+    if (this.state.isRunning) return
+    this.setState(() => {
+      return selectionSortInfo
+    })
+    const animations = getSelectionSort(this.state.array)
+    this.animate(animations)
+  }
+
 
   render() {
     const array = this.state.array
@@ -140,6 +150,7 @@ class SortingVisualizer extends React.Component {
             <button className={`ui button primary ${this.state.isRunning ? 'disabled' : 'hover-enable'}`} onClick={() => this.bubbleSort()}>Bubble Sort</button>
             <button className={`ui button primary ${this.state.isRunning ? 'disabled' : 'hover-enable'}`} onClick={() => this.insertionSort()}>Insertion Sort</button>
             <button className={`ui button primary ${this.state.isRunning ? 'disabled' : 'hover-enable'}`} onClick={() => this.quickSort()}>Quick Sort</button>
+            <button className={`ui button primary ${this.state.isRunning ? 'disabled' : 'hover-enable'}`} onClick={() => this.selectionSort()}>Selection Sort</button>
           </div>
         </div>
         <div>
@@ -149,13 +160,12 @@ class SortingVisualizer extends React.Component {
           <hr />
           {this.state.isRunning && (
             <div className="ui container bg-grey animate-content">
-              <h2>{this.state.algoTitle}</h2>
-              <div className="sub-max-width">
-                <h3>Description</h3>
+              <div className="main-max-width">
+                <h2>{this.state.algoTitle}</h2>
                 <p>{this.state.algoDescription}</p>
               </div>
               <div className="sub-max-width">
-                <h3>Performance</h3>
+                <h2>Performance</h2>
                 <p className="full-width">Worst-case time complexity <span className="float-right">{this.state.wcTime}</span></p>
                 <p className="full-width">Average time complexity <span className="float-right">{this.state.avcTime}</span></p>
                 <p className="full-width">Best-case time complexity <span className="float-right">{this.state.beTime}</span></p>
