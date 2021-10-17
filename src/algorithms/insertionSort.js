@@ -23,7 +23,7 @@ export function getInsertionSort(array) {
   return animations
 }
 
-export const insertionsSortInfo = {
+export const insertionSortInfo = {
   isRunning: true,
   algoTitle: 'Insertion Sort',
   algoDescription: 'A simple algorithm that iterates through an array and at each iteratoin it remove one element from the array, finds the location it belongs to in the sorted list and inserts it there, repeating until no elements remain in the unsorted list.',

@@ -1,7 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { bubbleSortInfo, getBubbleSort } from '../algorithms/BubbleSort'
-import { getInsertionSort, insertionsSortInfo } from '../algorithms/insertionSort'
+import { getInsertionSort, insertionSortInfo } from '../algorithms/insertionSort'
+import { getQuickSort, quickSortInfo } from '../algorithms/QuickSort'
 
 const ANIMATION_SPEED = 1
 const MAIN_COLOR = '#5ac75c'
@@ -105,9 +106,18 @@ class SortingVisualizer extends React.Component {
   insertionSort() {
     if (this.state.isRunning) return
     this.setState(() => {
-      return insertionsSortInfo
+      return insertionSortInfo
     })
     const animations = getInsertionSort(this.state.array)
+    this.animate(animations)
+  }
+
+  quickSort() {
+    if (this.state.isRunning) return
+    this.setState(() => {
+      return quickSortInfo
+    })
+    const animations = getQuickSort(this.state.array)
     this.animate(animations)
   }
 
@@ -129,6 +139,7 @@ class SortingVisualizer extends React.Component {
             <button className={`ui button pink ${this.state.isRunning ? 'disabled' : 'hover-enable'}`} onClick={() => this.resetArray()}>Reset Array</button>
             <button className={`ui button primary ${this.state.isRunning ? 'disabled' : 'hover-enable'}`} onClick={() => this.bubbleSort()}>Bubble Sort</button>
             <button className={`ui button primary ${this.state.isRunning ? 'disabled' : 'hover-enable'}`} onClick={() => this.insertionSort()}>Insertion Sort</button>
+            <button className={`ui button primary ${this.state.isRunning ? 'disabled' : 'hover-enable'}`} onClick={() => this.quickSort()}>Quick Sort</button>
           </div>
         </div>
         <div>
