@@ -133,7 +133,7 @@ class SortingVisualizer extends React.Component {
         </div>
         <div>
           <div className="flex-center">
-            <h1>Sorting Viualiser</h1>
+            <h1>Sorting Visualizer</h1>
           </div>
           <hr />
           {this.state.isRunning && (

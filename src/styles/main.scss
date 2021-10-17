@@ -76,3 +76,9 @@ div.ui.container.bg-grey{
     transform: rotateX(0);
   }
 }
+
+@media only screen and (max-width: 800px){
+  .sub-max-width{
+    display: none;
+  }
+}
