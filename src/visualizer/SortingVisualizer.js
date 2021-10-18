@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { bubbleSortInfo, getBubbleSort } from '../algorithms/BubbleSort'
 import { getInsertionSort, insertionSortInfo } from '../algorithms/insertionSort'
+import { getMergeSort, mergeSortInfo } from '../algorithms/MergeSort'
 import { getQuickSort, quickSortInfo } from '../algorithms/QuickSort'
 import { getSelectionSort, selectionSortInfo } from '../algorithms/SelectionSort'
 
@@ -131,6 +132,15 @@ class SortingVisualizer extends React.Component {
     this.animate(animations)
   }
 
+  mergeSort() {
+    if (this.state.isRunning) return
+    this.setState(() => {
+      return mergeSortInfo
+    })
+    const animations = getMergeSort(this.state.array)
+    this.animate(animations)
+  }
+
 
   render() {
     const array = this.state.array
@@ -151,6 +161,7 @@ class SortingVisualizer extends React.Component {
             <button className={`ui button primary ${this.state.isRunning ? 'disabled' : 'hover-enable'}`} onClick={() => this.insertionSort()}>Insertion Sort</button>
             <button className={`ui button primary ${this.state.isRunning ? 'disabled' : 'hover-enable'}`} onClick={() => this.quickSort()}>Quick Sort</button>
             <button className={`ui button primary ${this.state.isRunning ? 'disabled' : 'hover-enable'}`} onClick={() => this.selectionSort()}>Selection Sort</button>
+            <button className={`ui button primary ${this.state.isRunning ? 'disabled' : 'hover-enable'}`} onClick={() => this.mergeSort()}>Merge Sort</button>
           </div>
         </div>
         <div>

@@ -24,10 +24,6 @@ function selectionSortRun(array, animations) {
 }
 
 
-
-
-
-
 export const selectionSortInfo = {
   isRunning: true,
   algoTitle: 'Selection Sort',
