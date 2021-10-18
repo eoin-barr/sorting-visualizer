@@ -25,6 +25,23 @@ p{
   justify-content: center;
 }
 
+.flex-wrap{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+button.ui.button{
+  margin: 10px;
+  width: 130px;
+}
+
+button.hover-enable:hover{
+  transform: scale(1.02);
+}
+
 button.hover-enable:hover{
   transform: scale(1.02);
 }

@@ -43,7 +43,7 @@ class SortingVisualizer extends React.Component {
     const numLines = containerWidth / 4
 
     const containerHeight = window.innerHeight
-    const maxLineHeight = Math.max((containerHeight - 350), 100)
+    const maxLineHeight = Math.max((containerHeight - 400), 100)
 
     for (let i = 0; i < numLines; i++) {
       array.push(randNumFromInterval(5, maxLineHeight))
@@ -154,8 +154,10 @@ class SortingVisualizer extends React.Component {
               style={{ height: `${value}px` }}
             ></div>
           ))}
-          <p>Choose A Sorting Algorithm</p>
-          <div style={{ display: 'block' }}>
+          <div className="flex-center">
+            <h4>Choose A Sorting Algorithm</h4>
+          </div>
+          <div className="flex-wrap">
             <button className={`ui button pink ${this.state.isRunning ? 'disabled' : 'hover-enable'}`} onClick={() => this.resetArray()}>Reset Array</button>
             <button className={`ui button primary ${this.state.isRunning ? 'disabled' : 'hover-enable'}`} onClick={() => this.bubbleSort()}>Bubble Sort</button>
             <button className={`ui button primary ${this.state.isRunning ? 'disabled' : 'hover-enable'}`} onClick={() => this.insertionSort()}>Insertion Sort</button>
