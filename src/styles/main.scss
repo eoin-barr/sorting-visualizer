@@ -1,8 +1,12 @@
-p{
-  line-height: 1.5; 
+p {
+  line-height: 1.5;
 }
 
-.array-container{
+.h1-font-size {
+  font-size: xx-large;
+}
+
+.array-container {
   position: absolute;
   bottom: 25px;
   left: 50px;
@@ -10,7 +14,7 @@ p{
   padding: 0;
 }
 
-.array-line{
+.array-line {
   width: 2px;
   background-color: #5ac75c;
   display: inline-block;
@@ -18,14 +22,14 @@ p{
   padding: 0;
 }
 
-.flex-center{
+.flex-center {
   margin: 10px 0;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.flex-wrap{
+.flex-wrap {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -33,49 +37,49 @@ p{
   flex-wrap: wrap;
 }
 
-button.ui.button{
+button.ui.button {
   margin: 10px;
   width: 130px;
 }
 
-button.hover-enable:hover{
+button.hover-enable:hover {
   transform: scale(1.02);
 }
 
-button.hover-enable:hover{
+button.hover-enable:hover {
   transform: scale(1.02);
 }
 
-hr{
+hr {
   width: 95%;
 }
 
-.main-max-width{
+.main-max-width {
   max-width: 600px;
   display: flex;
   flex-direction: column;
 }
-.sub-max-width{
+.sub-max-width {
   max-width: 300px;
   min-width: 300px;
   display: flex;
   flex-direction: column;
 }
 
-p.full-width{
+p.full-width {
   width: 100%;
   margin-bottom: 4px;
 }
 
-.float-right{
+.float-right {
   float: right;
 }
 
-h2{
+h2 {
   margin-bottom: 5px;
 }
 
-div.ui.container.bg-grey{
+div.ui.container.bg-grey {
   border-radius: 10px;
   display: flex;
   flex-direction: row;
@@ -84,7 +88,7 @@ div.ui.container.bg-grey{
   margin-top: 15px;
 }
 
-.animate-content{
+.animate-content {
   animation: transitionDown 2s;
 }
 
@@ -99,8 +103,8 @@ div.ui.container.bg-grey{
   }
 }
 
-@media only screen and (max-width: 900px){
-  .sub-max-width{
+@media only screen and (max-width: 900px) {
+  .sub-max-width {
     display: none;
   }
 }
