@@ -189,7 +189,10 @@ class SortingVisualizer extends React.Component {
         <div>
           <div className="flex-center">
             <h1 className="h1-font-size">Sorting Visualizer</h1>
-            <button className="ui button pink" onClick={() => this.theme()}>Toggle Theme</button>
+            <div className="ui toggle checkbox">
+              <input onClick={() => this.theme()} type="checkbox" name="public"/>
+              <label>{this.state.isTheme ? '🌚' : '🌕' }</label>
+            </div>
           </div>
           <hr />
           {this.state.isRunning && (
