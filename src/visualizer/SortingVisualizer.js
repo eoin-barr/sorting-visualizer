@@ -7,8 +7,10 @@ import { getQuickSort, quickSortInfo } from '../algorithms/QuickSort'
 import { getSelectionSort, selectionSortInfo } from '../algorithms/SelectionSort'
 
 const ANIMATION_SPEED = 1
-const MAIN_COLOR = '#5ac75c'
-const CHANGE_COLOR = 'blue'
+// const MAIN_COLOR = '#5ac75c'
+// const CHANGE_COLOR = '#ea0a83'
+const MAIN_COLOR = '#f253a8'
+const CHANGE_COLOR = '#5ac75c'
 
 class SortingVisualizer extends React.Component {
 
@@ -23,12 +25,14 @@ class SortingVisualizer extends React.Component {
       avcTime: this.props.algorithm.avcTime,
       beTime: this.props.algorithm.beTime,
       wcSpace: this.props.algorithm.wcSpace,
+      isTheme: this.props.isTheme,
     }
   }
 
   componentDidMount() {
     this.resetArray()
     window.addEventListener('resize', this.resetArray.bind(this))
+    console.log(document.body.style)
   }
 
   componentWillUnmount() {
@@ -141,6 +145,22 @@ class SortingVisualizer extends React.Component {
     this.animate(animations)
   }
 
+  theme(){
+    if (this.state.isTheme){
+      document.body.style.backgroundColor = 'rgb(232, 230, 230)'
+      document.body.style.color = 'rgb(38, 38, 38)'
+      this.setState(() => {
+        return { isTheme: false }
+      })
+    } else {
+      document.body.style.backgroundColor = 'rgb(38, 38, 38)'
+      document.body.style.color = 'rgb(232, 230, 230)'
+      this.setState(() => {
+        return { isTheme: true }
+      })
+    }
+  }
+
 
   render() {
     const array = this.state.array
@@ -169,6 +189,7 @@ class SortingVisualizer extends React.Component {
         <div>
           <div className="flex-center">
             <h1 className="h1-font-size">Sorting Visualizer</h1>
+            <button className="ui button pink" onClick={() => this.theme()}>Toggle Theme</button>
           </div>
           <hr />
           {this.state.isRunning && (
@@ -202,6 +223,7 @@ const mapStateToProps = (state) => {
     array: state.array,
     isRunning: state.isRunning,
     algorithm: state.algorithm,
+    isTheme: state.isTheme,
   }
 }
 
