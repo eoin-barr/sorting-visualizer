@@ -36,6 +36,12 @@ p {
   justify-content: center;
 }
 
+.mb {
+  margin: 0 0 12px 10px;
+  // width: 100%;
+  float: right;
+}
+
 .flex-wrap {
   display: flex;
   flex-direction: row;
