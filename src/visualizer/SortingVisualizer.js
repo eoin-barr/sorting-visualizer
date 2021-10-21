@@ -188,10 +188,8 @@ class SortingVisualizer extends React.Component {
         <div>
           <div className="flex-center">
             <h1 className="h1-font-size">Sorting Visualizer</h1>
-            {/*TODO: put toggle in corner of page and transition fade color */}
             <div className="ui toggle checkbox mb">
               <input onClick={() => this.theme()} type="checkbox" name="public"/>
-              {/* <label>{this.state.isTheme ? '🌚' : '🌕' }</label> */}
               <label>{this.state.isTheme ? <i className="fas fa-moon fa-lg white-i"></i> : <i className="fas fa-lightbulb fa-lg"></i>}</label>
             </div>
           </div>

@@ -126,6 +126,12 @@ div.ui.container.bg-grey {
   }
 }
 
+@media only screen and (max-width: 1000px) {
+  .flex-wrap {
+    margin-right: 50px;
+  }
+}
+
 @media only screen and (max-width: 900px) {
   .sub-max-width {
     display: none;
