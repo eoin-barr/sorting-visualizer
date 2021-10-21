@@ -7,15 +7,15 @@ p {
   line-height: 1.5;
 }
 
-// .h1-font-size {
-//   padding-top: 30px;
-//   font-size: 100px;
-// }
+h1.h1-font-size {
+  // padding-top: 30px;
+  // font-size: 100px;
+  margin-top: 7px;
+}
 
 .array-container {
   position: absolute;
   bottom: 25px;
-
   left: 50px;
   margin: 0;
   padding: 0;
@@ -30,6 +30,7 @@ p {
 }
 
 .flex-center {
+  width: 100%;
   margin: 10px 0;
   display: flex;
   align-items: center;
@@ -37,9 +38,8 @@ p {
 }
 
 .mb {
-  margin: 0 0 12px 10px;
-  // width: 100%;
-  float: right;
+  margin: 12px 0 12px 10px;
+  left: 35%;
 }
 
 .flex-wrap {
@@ -117,6 +117,12 @@ div.ui.container.bg-grey {
   to {
     opacity: 1;
     transform: rotateX(0);
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .mb {
+    left: 0%;
   }
 }
 
