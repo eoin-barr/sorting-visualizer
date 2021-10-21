@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { bubbleSortInfo, getBubbleSort } from '../algorithms/BubbleSort'
-import { getInsertionSort, insertionSortInfo } from '../algorithms/insertionSort'
+import { getInsertionSort, insertionSortInfo } from '../algorithms/InsertionSort'
 import { getMergeSort, mergeSortInfo } from '../algorithms/MergeSort'
 import { getQuickSort, quickSortInfo } from '../algorithms/QuickSort'
 import { getSelectionSort, selectionSortInfo } from '../algorithms/SelectionSort'
