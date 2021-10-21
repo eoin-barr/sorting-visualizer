@@ -55,10 +55,6 @@ function merge(array, begin, middle, finish, animations) {
   }
 }
 
-
-
-
-
 export const mergeSortInfo = {
   isRunning: true,
   algoTitle: 'Merge Sort',

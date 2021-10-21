@@ -6,7 +6,6 @@ export function getSelectionSort(array) {
   return animations
 }
 
-
 function selectionSortRun(array, animations) {
   for (let i = 0; i < array.length - 1; i++) {
     let minIndex = i
@@ -22,7 +21,6 @@ function selectionSortRun(array, animations) {
     array[minIndex] = temp
   }
 }
-
 
 export const selectionSortInfo = {
   isRunning: true,

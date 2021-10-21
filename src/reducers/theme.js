@@ -1,9 +1,5 @@
 import { createAction, handleActions } from 'redux-actions'
 
-// const initialState = {
-//   backgroundColor: 'black',
-//   color: 'white',
-// }
 const initialState = true
 
 export const SET_THEME = 'SET_THEME'

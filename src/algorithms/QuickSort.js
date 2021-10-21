@@ -42,10 +42,6 @@ function partition(array, begin, finish, animations) {
   return j
 }
 
-
-
-
-
 export const quickSortInfo = {
   isRunning: true,
   algoTitle: 'Quick Sort',
