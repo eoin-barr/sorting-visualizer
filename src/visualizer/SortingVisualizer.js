@@ -7,8 +7,6 @@ import { getQuickSort, quickSortInfo } from '../algorithms/QuickSort'
 import { getSelectionSort, selectionSortInfo } from '../algorithms/SelectionSort'
 
 const ANIMATION_SPEED = 1
-// const MAIN_COLOR = '#5ac75c'
-// const CHANGE_COLOR = '#ea0a83'
 const MAIN_COLOR = '#f253a8'
 const CHANGE_COLOR = '#5ac75c'
 
@@ -44,10 +42,8 @@ class SortingVisualizer extends React.Component {
     const width = window.innerWidth
     const containerWidth = width - 100
     const numLines = containerWidth / 4
-
     const containerHeight = window.innerHeight
     const maxLineHeight = Math.max((containerHeight - 410), 100)
-
     for (let i = 0; i < numLines; i++) {
       array.push(randNumFromInterval(5, maxLineHeight))
     }
@@ -55,9 +51,6 @@ class SortingVisualizer extends React.Component {
       return { array: array }
     })
   }
-
-
-
 
   animate(animations) {
     const arrLines = document.getElementsByClassName('array-line')
