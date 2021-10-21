@@ -17,8 +17,9 @@ function quickSortRun(array, begin, finish, animations) {
 function partition(array, begin, finish, animations) {
   let i = begin
   let j = finish + 1
+  const condition = true
   const pivot = array[begin]
-  while (true) {
+  while (condition) {
     while (array[++i] <= pivot) {
       if (i === finish) break
       animations.push([[i], false])
