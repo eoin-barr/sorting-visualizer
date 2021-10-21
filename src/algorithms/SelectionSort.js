@@ -25,7 +25,7 @@ function selectionSortRun(array, animations) {
 export const selectionSortInfo = {
   isRunning: true,
   algoTitle: 'Selection Sort',
-  algoDescription: 'Is an in-place coparison sorting algorithm that divides the input list into two parts: the sublist of items already sorted, which is built up from left to right at teh front (left) of the list, and the sublist of items remaining to be sorted htat occupy the rest of the list. The algoithm proceeds by finding the smallest element in the unsorted, exchanging )swapping) it with the leftmost undsorted element (putting it in sorted order), and moving the sublist boudaries one element to the right.',
+  algoDescription: 'Is an in-place coparison sorting algorithm that divides the input list into two parts: the sublist of items already sorted, which is built up from left to right at the front (left) of the list, and the sublist of items remaining to be sorted that occupy the rest of the list. The algoithm proceeds by finding the smallest element in the unsorted, exchanging (swapping) it with the leftmost undsorted element (putting it in sorted order), and moving the sublist boundaries one element to the right.',
   wcTime: 'O(n²)',
   avcTime: 'O(n²)',
   beTime: 'O(n²)',

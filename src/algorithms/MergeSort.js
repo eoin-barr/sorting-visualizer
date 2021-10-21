@@ -58,7 +58,7 @@ function merge(array, begin, middle, finish, animations) {
 export const mergeSortInfo = {
   isRunning: true,
   algoTitle: 'Merge Sort',
-  algoDescription: 'Merge Sort is an efficient, stable sorting algorith that makes use of the divide and conquer strategy.',
+  algoDescription: 'Merge Sort is an efficient, stable sorting algorithm that makes use of the divide and conquer strategy.',
   wcTime: 'O(𝘯 log 𝘯)',
   avcTime: 'O(𝘯 log 𝘯)',
   beTime: 'O(𝘯 log 𝘯)',
